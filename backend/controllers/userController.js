@@ -85,10 +85,10 @@ export const getSuggestedUsers = async (req, res) => {
 
 export const updateProfile = async (req, res) => {
   const { fullName, username, email, currentPassword, newPassword, bio, link } = req.body;
-  const { profileImg, coverImg } = req.body;
+  let { profileImg, coverImg } = req.body;
   const userId = req.user._id;
   try {
-    const user = await User.findById(userId);
+    let user = await User.findById(userId);
     if (!user) return res.status(404).json({ error: "User not found" });
     if ((!newPassword && currentPassword) || (newPassword && !currentPassword)) {
       return res.status(400).json({ error: "Please provide both current and new password." });

@@ -6,6 +6,7 @@ import { v2 as cloudinary } from "cloudinary";
 import connectDB from "./db/connectDB.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import postRoutes from "./routes/postRoutes.js"
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 //Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/post", postRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running at port ${PORT}`);
